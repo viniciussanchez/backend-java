@@ -1,8 +1,7 @@
 package br.com.sanchez.userapi.controllers;
 
 import br.com.sanchez.userapi.dto.UserDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class UserController {
 
     @GetMapping("/")
     public String getMensagem() {
-        return  "Spring bott is working!";
+        return "Spring boot is working!";
     }
 
     @GetMapping("/users")
@@ -55,6 +54,32 @@ public class UserController {
         return users;
     }
 
+    @GetMapping("/users/{cpf}")
+    public UserDTO getUser(@PathVariable String cpf) {
+        for (UserDTO userDTO : users) {
+            if (userDTO.getCpf().equals(cpf)) {
+                return userDTO;
+            }
+        }
+        return null;
+    }
 
+    @PostMapping("/users")
+    UserDTO insert(@RequestBody UserDTO userDTO) {
+        userDTO.setDataCadastro(new Date());
+        users.add(userDTO);
+        return userDTO;
+    }
+
+    @DeleteMapping("/users/{cpf}")
+    public boolean delete(@PathVariable String cpf) {
+        for (UserDTO userDTO: users) {
+            if (userDTO.getCpf().equals(cpf)) {
+                users.remove(userDTO);
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
