@@ -13,3 +13,9 @@ Se preferir, pode usar a [imagem](https://hub.docker.com/_/postgres) docker do P
 `
 docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=mypassword postgres
 `
+
+### Bibliotecas
+* Spring Boot
+* Spring Web
+* Spring Data
+* [Flyway](https://github.com/flyway/flyway)
