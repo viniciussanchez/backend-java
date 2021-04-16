@@ -6,6 +6,7 @@ import br.com.sanchez.userapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +31,7 @@ public class UserService {
     }
 
     public UserDTO save(UserDTO userDTO) {
+        userDTO.setDataCadastro(new Date());
         User user = userRepository.save(User.convert(userDTO));
         return UserDTO.convert(user);
     }

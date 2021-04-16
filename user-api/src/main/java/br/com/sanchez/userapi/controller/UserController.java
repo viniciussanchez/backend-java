@@ -38,8 +38,8 @@ public class UserController {
         return userService.delete(id);
     }
 
-    @GetMapping("/user/search")
-    public List<UserDTO> queryByName(@RequestParam(name = "nome", required = true) String nome) {
+    @GetMapping("/users/search")
+    public List<UserDTO> queryByNome(@RequestParam(name = "nome", required = true) String nome) {
         return userService.queryByNome(nome);
     }
 
