@@ -16,7 +16,7 @@ public class ProductDTO {
     @NotNull
     private Float preco;
     @NotNull
-    private CategoryDTO categoryDTO;
+    private CategoryDTO category;
 
     public ProductDTO() {
     }
@@ -45,12 +45,12 @@ public class ProductDTO {
         this.preco = preco;
     }
 
-    public CategoryDTO getCategoryDTO() {
-        return this.categoryDTO;
+    public CategoryDTO getCategory() {
+        return this.category;
     }
 
-    public void setCategoryDTO(final CategoryDTO categoryDTO) {
-        this.categoryDTO = categoryDTO;
+    public void setCategory(final CategoryDTO category) {
+        this.category = category;
     }
 
     public String getDescricao() {
@@ -68,7 +68,7 @@ public class ProductDTO {
         productDTO.setProductIdentifier(product.getProductIdentifier());
         productDTO.setDescricao(product.getDescricao());
         if (product.getCategory() != null) {
-            productDTO.setCategoryDTO(CategoryDTO.convert(product.getCategory()));
+            productDTO.setCategory(CategoryDTO.convert(product.getCategory()));
         }
         return productDTO;
     }

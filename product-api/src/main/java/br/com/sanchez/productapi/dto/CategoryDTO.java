@@ -9,7 +9,6 @@ public class CategoryDTO {
 
     @NotNull
     private Long id;
-    @NotBlank
     private String nome;
 
     public CategoryDTO() {
