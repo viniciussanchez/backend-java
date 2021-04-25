@@ -2,6 +2,9 @@ package br.com.sanchez.shoppingapi.dto;
 
 import br.com.sanchez.shoppingapi.model.Item;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class ItemDTO {
 
     @NotBlank
