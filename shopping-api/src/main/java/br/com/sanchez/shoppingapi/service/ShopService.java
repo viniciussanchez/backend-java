@@ -1,6 +1,7 @@
 package br.com.sanchez.shoppingapi.service;
 
 import br.com.sanchez.shoppingapi.dto.ShopDTO;
+import br.com.sanchez.shoppingapi.dto.ShopReportDTO;
 import br.com.sanchez.shoppingapi.model.Shop;
 import br.com.sanchez.shoppingapi.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,15 @@ public class ShopService {
         shop.setDate(new Date());
         shop = shopRepository.save(shop);
         return ShopDTO.convert(shop);
+    }
+
+    public List<ShopDTO> getShopByFilter(final Date dataInicio, final Date dataFim, final Float valorMinimo) {
+        List<Shop> shops = shopRepository.getShopByFilters(dataInicio, dataFim, valorMinimo);
+        return shops.stream().map(ShopDTO::convert).collect(Collectors.toList());
+    }
+
+    public ShopReportDTO getReportByDate(final Date dataInicio, final Date dataFim) {
+        return shopRepository.getReportByDate(dataInicio, dataFim);
     }
 
 }
