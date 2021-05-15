@@ -1,8 +1,8 @@
 package br.com.sanchez.backend.java.controller;
 
+import br.com.sanchez.backend.java.dto.ShopDTO;
+import br.com.sanchez.backend.java.dto.ShopReportDTO;
 import br.com.sanchez.backend.java.service.ShopService;
-import br.com.sanchez.shoppingapi.dto.ShopDTO;
-import br.com.sanchez.shoppingapi.dto.ShopReportDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;

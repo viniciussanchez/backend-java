@@ -1,6 +1,6 @@
 package br.com.sanchez.backend.java.model;
 
-import br.com.sanchez.shoppingapi.dto.ShopDTO;
+import br.com.sanchez.backend.java.dto.ShopDTO;
 
 import javax.persistence.*;
 import java.util.Date;

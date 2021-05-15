@@ -1,7 +1,8 @@
 package br.com.sanchez.backend.java.service;
 
-import br.com.sanchez.shoppingapi.dto.ShopDTO;
-import br.com.sanchez.shoppingapi.dto.ShopReportDTO;
+import br.com.sanchez.backend.java.converter.DTOConverter;
+import br.com.sanchez.backend.java.dto.ShopDTO;
+import br.com.sanchez.backend.java.dto.ShopReportDTO;
 import br.com.sanchez.backend.java.model.Shop;
 import br.com.sanchez.backend.java.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +21,23 @@ public class ShopService {
 
     public List<ShopDTO> getAll() {
         List<Shop> shops = shopRepository.findAll();
-        return shops.stream().map(ShopDTO::convert).collect(Collectors.toList());
+        return shops.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
     public List<ShopDTO> getByUser(final String userIdentifier) {
         List<Shop> shops = shopRepository.findAllByUserIdentifier(userIdentifier);
-        return shops.stream().map(ShopDTO::convert).collect(Collectors.toList());
+        return shops.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
     public List<ShopDTO> getByDate(final ShopDTO shopDTO) {
         List<Shop> shops = shopRepository.findAllByDateGreaterThan(shopDTO.getDate());
-        return shops.stream().map(ShopDTO::convert).collect(Collectors.toList());
+        return shops.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
     public ShopDTO findById(final long id) {
         Optional<Shop> shop = shopRepository.findById(id);
         if (shop.isPresent()) {
-            return ShopDTO.convert(shop.get());
+            return DTOConverter.convert(shop.get());
         }
         return null;
     }
@@ -46,12 +47,12 @@ public class ShopService {
         Shop shop = Shop.convert(shopDTO);
         shop.setDate(new Date());
         shop = shopRepository.save(shop);
-        return ShopDTO.convert(shop);
+        return DTOConverter.convert(shop);
     }
 
     public List<ShopDTO> getShopByFilter(final Date dataInicio, final Date dataFim, final Float valorMinimo) {
         List<Shop> shops = shopRepository.getShopByFilters(dataInicio, dataFim, valorMinimo);
-        return shops.stream().map(ShopDTO::convert).collect(Collectors.toList());
+        return shops.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
     public ShopReportDTO getReportByDate(final Date dataInicio, final Date dataFim) {

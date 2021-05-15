@@ -1,6 +1,6 @@
 package br.com.sanchez.backend.java.model;
 
-import br.com.sanchez.productapi.dto.CategoryDTO;
+import br.com.sanchez.backend.java.dto.CategoryDTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,6 +1,7 @@
 package br.com.sanchez.backend.java.service;
 
-import br.com.sanchez.productapi.dto.ProductDTO;
+import br.com.sanchez.backend.java.converter.DTOConverter;
+import br.com.sanchez.backend.java.dto.ProductDTO;
 import br.com.sanchez.backend.java.model.Product;
 import br.com.sanchez.backend.java.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,25 +19,25 @@ public class ProductService {
 
     public List<ProductDTO> getAll() {
         List<Product> products = productRepository.findAll();
-        return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
+        return products.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
     public List<ProductDTO> getProductByCategoryId(final Long categoryId) {
         List<Product> products = productRepository.getProductByCategory(categoryId);
-        return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
+        return products.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
     public ProductDTO findByProductIdentifier(final String productIdentifier) {
         Product product = productRepository.findByProductIdentifier(productIdentifier);
         if (product != null) {
-            return ProductDTO.convert(product);
+            return DTOConverter.convert(product);
         }
         return null;
     }
 
     public ProductDTO save(final ProductDTO productDTO) {
         Product product = productRepository.save(Product.convert(productDTO));
-        return ProductDTO.convert(product);
+        return DTOConverter.convert(product);
     }
 
     public ProductDTO delete(final long productId) {

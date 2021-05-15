@@ -1,6 +1,6 @@
 package br.com.sanchez.backend.java.repository;
 
-import br.com.sanchez.shoppingapi.dto.ShopReportDTO;
+import br.com.sanchez.backend.java.dto.ShopReportDTO;
 import br.com.sanchez.backend.java.model.Shop;
 
 import javax.persistence.EntityManager;

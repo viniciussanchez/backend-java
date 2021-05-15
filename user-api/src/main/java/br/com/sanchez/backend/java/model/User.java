@@ -1,6 +1,6 @@
 package br.com.sanchez.backend.java.model;
 
-import br.com.sanchez.userapi.dto.UserDTO;
+import br.com.sanchez.backend.java.dto.UserDTO;
 
 import javax.persistence.*;
 import java.util.Date;

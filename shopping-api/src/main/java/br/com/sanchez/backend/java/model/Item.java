@@ -1,6 +1,6 @@
 package br.com.sanchez.backend.java.model;
 
-import br.com.sanchez.shoppingapi.dto.ItemDTO;
+import br.com.sanchez.backend.java.dto.ItemDTO;
 
 import javax.persistence.Embeddable;
 

@@ -1,7 +1,7 @@
 package br.com.sanchez.backend.java.controller;
 
+import br.com.sanchez.backend.java.dto.UserDTO;
 import br.com.sanchez.backend.java.service.UserService;
-import br.com.sanchez.userapi.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,7 @@
 package br.com.sanchez.backend.java.repository;
 
+import br.com.sanchez.backend.java.dto.ShopReportDTO;
 import br.com.sanchez.backend.java.model.Shop;
-import br.com.sanchez.shoppingapi.dto.ShopReportDTO;
 
 import java.util.Date;
 import java.util.List;

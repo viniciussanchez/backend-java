@@ -1,7 +1,7 @@
 package br.com.sanchez.backend.java.controller;
 
+import br.com.sanchez.backend.java.dto.ProductDTO;
 import br.com.sanchez.backend.java.service.ProductService;
-import br.com.sanchez.productapi.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
