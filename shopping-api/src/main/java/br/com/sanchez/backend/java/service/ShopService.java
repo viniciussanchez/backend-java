@@ -1,6 +1,8 @@
 package br.com.sanchez.backend.java.service;
 
 import br.com.sanchez.backend.java.converter.DTOConverter;
+import br.com.sanchez.backend.java.dto.ItemDTO;
+import br.com.sanchez.backend.java.dto.ProductDTO;
 import br.com.sanchez.backend.java.dto.ShopDTO;
 import br.com.sanchez.backend.java.dto.ShopReportDTO;
 import br.com.sanchez.backend.java.model.Shop;
@@ -18,6 +20,12 @@ public class ShopService {
 
     @Autowired
     private ShopRepository shopRepository;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private UserService userService;
 
     public List<ShopDTO> getAll() {
         List<Shop> shops = shopRepository.findAll();
@@ -43,6 +51,14 @@ public class ShopService {
     }
 
     public ShopDTO save(final ShopDTO shopDTO) {
+        if (userService.getUserByCpf(shopDTO.getUserIdentifier()) == null) {
+            return null;
+        }
+
+        if (!validateProducts(shopDTO.getItems())) {
+            return null;
+        }
+
         shopDTO.setTotal(shopDTO.getItems().stream().map(x -> x.getPrice()).reduce((float) 0, Float::sum));
         Shop shop = Shop.convert(shopDTO);
         shop.setDate(new Date());
@@ -57,6 +73,17 @@ public class ShopService {
 
     public ShopReportDTO getReportByDate(final Date dataInicio, final Date dataFim) {
         return shopRepository.getReportByDate(dataInicio, dataFim);
+    }
+
+    private boolean validateProducts(final List<ItemDTO> items) {
+        for (ItemDTO item : items) {
+            ProductDTO productDTO = productService.getProductByIdentifier(item.getProductIdentifier());
+            if (productDTO == null) {
+                return false;
+            }
+            item.setPrice(productDTO.getPreco());
+        }
+        return true;
     }
 
 }
