@@ -2,7 +2,10 @@ package br.com.sanchez.backend.java.service;
 
 import br.com.sanchez.backend.java.converter.DTOConverter;
 import br.com.sanchez.backend.java.dto.ProductDTO;
+import br.com.sanchez.backend.java.exception.CategoryNotFoundException;
+import br.com.sanchez.backend.java.exception.ProductNotFoundException;
 import br.com.sanchez.backend.java.model.Product;
+import br.com.sanchez.backend.java.repository.CategoryRepository;
 import br.com.sanchez.backend.java.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     public List<ProductDTO> getAll() {
         List<Product> products = productRepository.findAll();
@@ -32,10 +38,14 @@ public class ProductService {
         if (product != null) {
             return DTOConverter.convert(product);
         }
-        return null;
+        throw new ProductNotFoundException();
     }
 
     public ProductDTO save(final ProductDTO productDTO) {
+        Boolean existsCategory = categoryRepository.existsById(productDTO.getCategory().getId());
+        if (!existsCategory) {
+            throw new CategoryNotFoundException();
+        }
         Product product = productRepository.save(Product.convert(productDTO));
         return DTOConverter.convert(product);
     }
@@ -45,7 +55,7 @@ public class ProductService {
         if (product.isPresent()) {
             productRepository.delete(product.get());
         }
-        return null;
+        throw new ProductNotFoundException();
     }
 
 }

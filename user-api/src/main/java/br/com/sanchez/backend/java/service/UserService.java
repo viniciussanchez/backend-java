@@ -2,6 +2,7 @@ package br.com.sanchez.backend.java.service;
 
 import br.com.sanchez.backend.java.converter.DTOConverter;
 import br.com.sanchez.backend.java.dto.UserDTO;
+import br.com.sanchez.backend.java.exception.UserNotFoundException;
 import br.com.sanchez.backend.java.model.User;
 import br.com.sanchez.backend.java.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class UserService {
         if (user != null) {
             return DTOConverter.convert(user);
         }
-        return null;
+        throw new UserNotFoundException();
     }
 
     public List<UserDTO> queryByNome(String nome) {

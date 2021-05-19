@@ -1,6 +1,10 @@
 br\com\sanchez\backend\java\dto\CategoryDTO.class
-br\com\sanchez\backend\java\dto\ProductDTO.class
+br\com\sanchez\backend\java\dto\ErrorDTO.class
 br\com\sanchez\backend\java\dto\ItemDTO.class
+br\com\sanchez\backend\java\dto\ShopDTO.class
+br\com\sanchez\backend\java\exception\UserNotFoundException.class
+br\com\sanchez\backend\java\dto\ProductDTO.class
+br\com\sanchez\backend\java\exception\CategoryNotFoundException.class
+br\com\sanchez\backend\java\exception\ProductNotFoundException.class
 br\com\sanchez\backend\java\dto\ShopReportDTO.class
 br\com\sanchez\backend\java\dto\UserDTO.class
-br\com\sanchez\backend\java\dto\ShopDTO.class
