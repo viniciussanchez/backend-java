@@ -1,10 +1,7 @@
 package br.com.sanchez.backend.java.service;
 
 import br.com.sanchez.backend.java.converter.DTOConverter;
-import br.com.sanchez.backend.java.dto.ItemDTO;
-import br.com.sanchez.backend.java.dto.ProductDTO;
-import br.com.sanchez.backend.java.dto.ShopDTO;
-import br.com.sanchez.backend.java.dto.ShopReportDTO;
+import br.com.sanchez.backend.java.dto.*;
 import br.com.sanchez.backend.java.model.Shop;
 import br.com.sanchez.backend.java.repository.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,15 +47,9 @@ public class ShopService {
         return null;
     }
 
-    public ShopDTO save(final ShopDTO shopDTO) {
-        if (userService.getUserByCpf(shopDTO.getUserIdentifier()) == null) {
-            return null;
-        }
-
-        if (!validateProducts(shopDTO.getItems())) {
-            return null;
-        }
-
+    public ShopDTO save(final ShopDTO shopDTO, final String key) {
+        userService.getUserByCpf(shopDTO.getUserIdentifier(), key);
+        validateProducts(shopDTO.getItems());
         shopDTO.setTotal(shopDTO.getItems().stream().map(x -> x.getPrice()).reduce((float) 0, Float::sum));
         Shop shop = Shop.convert(shopDTO);
         shop.setDate(new Date());
