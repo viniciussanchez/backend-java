@@ -19,3 +19,7 @@ docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=mypassword postgres
 * Spring Web
 * Spring Data
 * [Flyway](https://github.com/flyway/flyway)
+* [PostgreSQL](https://mvnrepository.com/artifact/org.postgresql/postgresql)
+
+### Preparando o ambiente
+* Devido ao compartilhamento das classes do projeto shopping-client entre os demais projetos, é necessário fazer a sua instalação através do Maven, para que o jar do projeto fique disponível no repositório local do Maven na sua máquina.
