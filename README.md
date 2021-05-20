@@ -39,7 +39,7 @@ docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=mypassword postgres
 ```
 
 #### Running with docker
-1 - Em cada API, será necessário executar os seguintes comandos:
+Em cada API, será necessário executar os seguintes comandos:
 ```cmd
 mvn clean install
 mvn dockerfile:build
@@ -57,4 +57,16 @@ loja/shopping-api   latest         98c61ad141eb   15 seconds ago   144MB
 loja/product-api    latest         77e78088219a   2 minutes ago    144MB
 loja/user-api       latest         7904c9f83d84   6 minutes ago    144MB
 postgres            latest         26c8bcd8b719   5 weeks ago      314MB
+```
+
+Feito isso, basta executar o comando a seguir para subir as aplicações:
+
+```
+docker-compose up
+```
+
+e o comando abaixo para parar as aplicações:
+
+```
+docker-compose down
 ```
