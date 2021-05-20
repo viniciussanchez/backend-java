@@ -1,0 +1,46 @@
+version: "3.5"
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postdba
+
+  user:
+    image: loja/user-api
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_URL: jdbc:postgresql://postgres:5432/postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postdba
+    depends_on:
+      - postgres
+
+  product:
+    image: loja/product-api
+    ports:
+      - "8081:8081"
+    environment:
+      POSTGRES_URL: jdbc:postgresql://postgres:5432/postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postdba
+    depends_on:
+      - postgres
+
+  shopping:
+    image: loja/shopping-api
+    ports:
+      - "8082:8082"
+    environment:
+      POSTGRES_URL: jdbc:postgresql://postgres:5432/postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postdba
+      PRODUCT_API_URL: http://localhost:8081/products/
+      USER_API_URL: http://localhost:8080/users/cpf/
+    depends_on:
+      - postgres
