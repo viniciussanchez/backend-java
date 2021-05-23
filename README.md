@@ -85,3 +85,11 @@ Uma das formas de se interagir com o Kubernetes é através de linha de comando.
 ```
 kubectl version --client
 ```
+
+#### Kubernetes dashboard
+
+Outra forma de interagir com o Kubernetes é usando o Dashboard, que por padrão não é instalado de forma automática. Para instalar, basta executar o seguinte comando, como é indicado no [projeto oficial](https://github.com/kubernetes/dashboard) disponibilizado no GitHub:
+
+```
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+```
