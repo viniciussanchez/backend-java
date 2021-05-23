@@ -70,3 +70,10 @@ e o comando abaixo para parar as aplicações:
 ```
 docker-compose down
 ```
+
+#### Kubernetes
+
+Se você ainda não possui o Kubernetes instalado na sua máquina e utiliza o sistema operacional Windows junto com o Docker for Desktop, basta acessar a tela de configuração do Docker for Desktop e ativar a opção "Enable Kubernetes", como mostra a imagem abaixo:
+
+![image](https://user-images.githubusercontent.com/16382981/119264235-ac0f6a00-bbb8-11eb-8db2-e1ab4d95de71.png)
+
