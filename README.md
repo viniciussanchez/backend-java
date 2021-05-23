@@ -95,3 +95,9 @@ Outra forma de interagir com o Kubernetes é usando o Dashboard, que por padrão
 ```
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
 ```
+
+Agora para acessar o dashboard, precisamos criar um usuário no nosso cluster. Para isso, execute o comando:
+
+```
+kubectl create -f create-user.yaml
+```
