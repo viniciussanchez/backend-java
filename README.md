@@ -101,3 +101,31 @@ Agora para acessar o dashboard, precisamos criar um usuário no nosso cluster. P
 ```
 kubectl create -f create-user.yaml
 ```
+
+Para acessar o dashboard agora, é necessário executar o comando `kubectl proxy` que cria um proxy para acessar a API do Kubernetes, incluindo o dashboard. Após executar o comando, o dashboard estará disponível para ser acessado na URL: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+
+![image](https://user-images.githubusercontent.com/16382981/119269813-f8b26f80-bbcf-11eb-8731-6a6836eaa206.png)
+
+O acesso ao dashboard pode ser feito de duas maneiras, ou com a criação de um arquivo de configuração, ou com o uso de um token para o usuário. O acesso com o token é mais simples, já que o acesso com o arquivo de configuração também precisa do token. Para criar um token, basta executar o comando abaixo:
+
+```
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep loja-admin | awk '{print $1}')
+```
+
+Este comando deve retornar algo como:
+
+```
+Name:         loja-admin-token-mcgnb
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name: loja-admin
+              kubernetes.io/service-account.uid: b1eb6a1e-8b8b-4e0b-98d1-416023ab9eaa
+
+Type:  kubernetes.io/service-account-token
+
+Data
+====
+token:      SEU_TOKEN
+ca.crt:     1066 bytes
+namespace:  11 bytes
+```
