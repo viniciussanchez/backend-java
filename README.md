@@ -77,3 +77,11 @@ Se você ainda não possui o Kubernetes instalado na sua máquina e utiliza o si
 
 ![image](https://user-images.githubusercontent.com/16382981/119264235-ac0f6a00-bbb8-11eb-8db2-e1ab4d95de71.png)
 
+
+#### Kubectl
+
+Uma das formas de se interagir com o Kubernetes é através de linha de comando. Para isso vamos instalar o Kubectl. No sistema operacional Windows, basta acessar a página oficial do Kubernetes e seguir a [documentação](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/). Para verificar se deu tudo certo na instalação, ou caso deseja verificar se você já possui o Kubectl instalado, basta digitar o seguinte comando:
+
+```
+kubectl version --client
+```
