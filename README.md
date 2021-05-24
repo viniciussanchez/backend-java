@@ -129,3 +129,31 @@ token:      SEU_TOKEN
 ca.crt:     1066 bytes
 namespace:  11 bytes
 ```
+
+O próximo passo agora é subir um cluster com o banco de dados Postgres. Para isso, execute os seguintes comandos:
+
+```
+// Subindo o cluster
+kubectl create -f postgres-deployment.yaml
+kubectl create -f postgres-service.yaml
+
+// Mapeando a porta do SO para a porta do pod permitindo acessar dentro do cluster
+kubectl port-forward svc/postgres 5000:5432
+
+// Mapeando as variáveis de ambiente
+kubectl create -f config-map.yaml
+```
+
+O mesmo precisa ser feito para criar os clusters das nossas APIs:
+
+```
+kubectl create -f user-api/deploy/deployment.yaml
+kubectl create -f user-api/deploy/service.yaml
+
+kubectl create -f product-api/deploy/deployment.yaml
+kubectl create -f product-api/deploy/service.yaml
+
+kubectl create -f shopping-api/deploy/deployment.yaml
+kubectl create -f shopping-api/deploy/service.yaml
+kubectl create -f shopping-api/deploy/configmap.yaml
+```
