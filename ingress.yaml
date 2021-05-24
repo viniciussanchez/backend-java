@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+spec:
+  rules:
+  - host: "shopping.com"
+    http:
+      paths:
+        - pathType: Prefix
+          path: /user/
+          backend:
+            service:
+              name: user-api
+              port: 
+                number: 8080
+        - pathType: Prefix
+          path: /product/
+          backend:
+            service:
+              name: product-api
+              port: 
+                number: 8081
+        - pathType: Prefix
+          path: /shopping/
+          backend:
+            service:
+              name: shopping-api
+              port: 
+                number: 8082
