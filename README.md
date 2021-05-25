@@ -157,3 +157,28 @@ kubectl create -f shopping-api/deploy/deployment.yaml
 kubectl create -f shopping-api/deploy/service.yaml
 kubectl create -f shopping-api/deploy/configmap.yaml
 ```
+
+#### Nginx
+
+O Nginx é um seridor web de código aberto que pode ser usado no Kubernetes. Com ele é possível acessar os serviços no Kubernetes diretamente, sem ter necessidade de abrir uma porta da máquina local para o container. Trata-se de um serviço independente que pode ser instalado no cluster, assim como fizemos com o Postgres e nossas aplicações. Para instalar o Nginx no servidor, execute o seguinte comando:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.46.0/deploy/static/provider/cloud/deploy.yaml
+```
+
+#### Ingress
+
+O último passo agora é criar um Ingress, que é um elemento do Kubernetes para permitir o acesso externo ao cluster sem a necessidade de executar o comando port-forward. Basicamente o Ingress redireciona um acesso ao cluster para um Service de uma aplicação. Execute o comando a seguir para criar o Ingress:
+
+```
+kubectl create -f ingress.yaml
+
+// verificar se o ingress foi criado corretamente
+kubectl get ingresses.v1.networking.k8s.io
+```
+
+Com o Ingress configurado, agora basta direcionar as requisições do IP mostrado no comando anterior para a URL shopping.com. No Windows, basta editar o arquivo C:\windows\system32\drivers\etc\hosts e adicionar a linha:
+
+```
+129.168.99.100 shopping.com
+```
