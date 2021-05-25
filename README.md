@@ -3,25 +3,17 @@ Microsserviços, Spring Boot e Kubernetes
 
 A aplicação é composta de três microserviços, a user-api, a product-api e a shopping-api. A user-api possui os serviços para gerenciar os usuários da aplicação. A product-api possui os serviços para gerenciar os produtos disponíveis para compras. A shopping-api os serviços para que usuários realizem compras que por sua vez, interage com os outros dois microserviços.
 
-### Ambiente
-* [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/download)
-* [Maven](https://maven.apache.org)
-* [Docker](https://www.docker.com/products/docker-desktop)
-* [pgAdmin](https://www.pgadmin.org/download)
-* [PostgreSQL](https://www.postgresql.org/download)
+![image](https://user-images.githubusercontent.com/16382981/119489556-316a5a00-bd32-11eb-9734-521193c5243d.png)
 
-Se preferir, pode usar a [imagem](https://hub.docker.com/_/postgres) docker do PostgreSQL:
+### Ambiente
+[IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/download), [Maven](https://maven.apache.org), [Docker](https://www.docker.com/products/docker-desktop), [pgAdmin](https://www.pgadmin.org/download) e [PostgreSQL](https://www.postgresql.org/download) (se preferir, pode usar a [imagem](https://hub.docker.com/_/postgres) docker do PostgreSQL)
 
 `
 docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=mypassword postgres
 `
 
 ### Bibliotecas
-* Spring Boot
-* Spring Web
-* Spring Data
-* [Flyway](https://github.com/flyway/flyway)
-* [PostgreSQL](https://mvnrepository.com/artifact/org.postgresql/postgresql)
+Spring Boot, Spring Web, Spring Data, [Flyway](https://github.com/flyway/flyway) e [PostgreSQL](https://mvnrepository.com/artifact/org.postgresql/postgresql)
 
 ### Running
 1 - Devido ao compartilhamento das classes do projeto shopping-client entre os demais projetos, é necessário fazer a sua instalação através do Maven, para que o jar do projeto fique disponível no repositório local do Maven na sua máquina.
@@ -182,3 +174,5 @@ Com o Ingress configurado, agora basta direcionar as requisições do IP mostrad
 ```
 129.168.99.100 shopping.com
 ```
+
+Pronto, agora você já pode acessar as APIs usando shopping.com/users, shopping.com/products, etc.
